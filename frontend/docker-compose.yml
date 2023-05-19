@@ -1,0 +1,20 @@
+version: "3.1"
+
+services:
+  frontend:
+    build: .
+    restart: always
+    container_name: frontend
+    environment:
+      API_HOST: /backend/v2/api/
+      BASE_URL: /backend/v2
+      BASE_DOMAIN: localhost
+      API_TOKEN: backend1234567*
+      NAME: Test-Frontend
+    networks:
+      - test-untic
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+networks:
+  test-untic:
+    name: test-untic

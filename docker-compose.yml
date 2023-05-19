@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  database-test:
+    build: ./database/.
+    ports:
+      - "54321:5432"
+  backend:
+    build: ./backend
+    ports:
+      - "10000:3000"
+    depends_on:
+      - database-test
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:3000"

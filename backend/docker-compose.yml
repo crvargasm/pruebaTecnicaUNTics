@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  backend:
+    build: .
+    restart: always
+    container_name: backend
+    environment:
+      BASE_URL: /backend/v2/api/
+      DB_HOST: database-test
+      DB_PORT: 5432
+      DB_USER: database
+      DB_PASSWORD: database1234
+      DB_NAME: database
+      JWT_SECRET: backend1234567*
+      API_TOKEN: backend1234567*
+      DEBUG: 1
+    networks:
+      - test-untic
+    external_links:
+      - database-test
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+networks:
+  test-untic:
+    name: test-untic
