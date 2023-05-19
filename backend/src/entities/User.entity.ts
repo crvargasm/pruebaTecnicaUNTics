@@ -1,18 +1,12 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { PaymentMethod } from './PaymentMethod.entity';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { PaymentMethod } from './paymentMethod.entity';
 
-@Entity()
+@Entity() //Sería el semejante a una Tabla en SQL
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: number;
 
-  @Column()
+  @Column()   //Columnas SQL
   name: string;
 
   @Column()

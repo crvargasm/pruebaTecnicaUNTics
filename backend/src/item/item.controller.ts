@@ -1,20 +1,36 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { ItemService } from './item.service';
-import { Item } from './item.entity';
+import { Controller, Get, Post, Delete, Body, Param, ParseIntPipe, Patch } from '@nestjs/common'
+import { ItemService } from './item.service'
+import { Item } from './item.entity'
+import { CreateItemDto } from './dto/create-item.dto'
+import { UpdateItemDto } from './dto/update-item.dto'
 
-@Controller('items')
+@Controller('item')
 export class ItemController {
 
     constructor(private readonly itemsService: ItemService) { }
 
     @Get()
-    async getAllItems(): Promise<Item[]> {
-        return this.itemsService.getAllItems();
+    async getAllItems() {
+        return this.itemsService.getAllItems()
+    }
+
+    @Get(':id')
+    async getItem(@Param('id', ParseIntPipe) id: number) {
+        return this.itemsService.getItem(id)
     }
 
     @Post()
-    async createItem(@Body() item: Item): Promise<Item> {
-        console.log(item)
-        return this.itemsService.createItem(item);
+    async createItem(@Body() item: CreateItemDto) {
+        return this.itemsService.createItem(item)
+    }
+
+    @Patch(':id')
+    async updateItem(@Param('id', ParseIntPipe) id: number, @Body() item: UpdateItemDto) {
+        return this.itemsService.updateItem(id, item)
+    }
+
+    @Delete(':id')
+    async deleteItem(@Param('id', ParseIntPipe) id: number) {
+        return this.itemsService.deleteItem(id)
     }
 }
