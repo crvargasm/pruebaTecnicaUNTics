@@ -5,7 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { PaymentMethod } from './PaymentMethod';
+import { PaymentMethod } from './PaymentMethod.entity';
 
 @Entity()
 export class User extends BaseEntity {

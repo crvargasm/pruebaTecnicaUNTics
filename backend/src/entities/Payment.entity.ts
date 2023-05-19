@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { PaymentMethod } from './PaymentMethod';
-import { User } from './User';
+import { PaymentMethod } from './PaymentMethod.entity';
+import { User } from './User.entity';
 @Entity()
 export class Payment {
   @PrimaryGeneratedColumn('uuid')
