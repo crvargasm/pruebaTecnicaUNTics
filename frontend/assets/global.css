@@ -10,3 +10,52 @@ body {
     margin: 0;
     padding: 0;
 }
+
+table {
+    border-spacing: 0px;
+    border-collapse: separate;
+    width: 100%;
+}
+
+td,
+th {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f226;
+}
+
+.addButton {
+    color: white;
+    background-color: red;
+    border-radius: 10px;
+    padding: 0 20px;
+    margin: 0 12px;
+    transition: 0.2s;
+}
+
+.addButton:hover {
+    transform: scale(1.1);
+}
+
+.addButton:active {
+    transform: scale(1);
+}
+
+.title {
+    font-family: 'Abel';
+    margin-bottom: 1rem;
+}
+
+.action {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.action:hover {
+    color: yellow;
+    text-decoration: underline;
+}

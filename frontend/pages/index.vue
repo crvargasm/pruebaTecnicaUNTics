@@ -58,16 +58,18 @@ export default {
 .H1_Home {
   font-size: 70px;
   margin-top: 3rem;
-  color: white;
+  color: rgb(255, 255, 0);
+  text-shadow: black -6px 6px;
 }
 
 .P_Home {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
   font-size: 30px;
   border-radius: 1rem;
   color: white;
   margin-top: 4rem;
   padding: 1rem 3rem;
+  box-shadow: rgba(255, 0, 0, 0.7) -12px 12px;
 }
 
 .ImgCEO_Home {
@@ -80,6 +82,6 @@ export default {
 .P_Home_quo {
   display: flex;
   font-size: 25px;
-  justify-content: end;
+  justify-content: flex-end;
 }
 </style>
