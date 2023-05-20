@@ -1,6 +1,5 @@
 import { Controller, Get, Post, Delete, Body, Param, ParseIntPipe, Patch } from '@nestjs/common'
 import { ItemService } from './item.service'
-import { Item } from './item.entity'
 import { CreateItemDto } from './dto/create-item.dto'
 import { UpdateItemDto } from './dto/update-item.dto'
 

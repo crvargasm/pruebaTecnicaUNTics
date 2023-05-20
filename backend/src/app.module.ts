@@ -3,12 +3,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { Payment } from './entities/payment.entity';
-import { User } from './entities/user.entity';
-import { PaymentMethod } from './entities/paymentMethod.entity';
-import { ItemModule } from './item/item.module';
+
+import { User } from './user/user.entity';
 import { Item } from './item/item.entity';
-const entities = [User, Payment, PaymentMethod, Item];
+import { Payment } from './entities/payment.entity';
+import { PaymentMethod } from './entities/paymentMethod.entity';
+
+import { UserModule } from './user/user.module';
+import { ItemModule } from './item/item.module';
+
+const entities = [User, Item, Payment, PaymentMethod];
 
 @Module({
   imports: [
@@ -25,6 +29,7 @@ const entities = [User, Payment, PaymentMethod, Item];
       logging: ['query', 'error'],
     }),
     TypeOrmModule.forFeature(entities),
+    UserModule,
     ItemModule,
   ],
   controllers: [AppController],
