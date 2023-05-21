@@ -6,11 +6,12 @@ import { ConfigModule } from '@nestjs/config';
 
 import { User } from './user/user.entity';
 import { Item } from './item/item.entity';
-import { Payment } from './entities/payment.entity';
-import { PaymentMethod } from './entities/paymentMethod.entity';
+import { Payment } from './payment/payment.entity';
+import { PaymentMethod } from './paymentMethod/paymentMethod.entity';
 
 import { UserModule } from './user/user.module';
 import { ItemModule } from './item/item.module';
+import { PaymentMethodModule } from './paymentMethod/paymentMethod.module';
 
 const entities = [User, Item, Payment, PaymentMethod];
 
@@ -31,6 +32,7 @@ const entities = [User, Item, Payment, PaymentMethod];
     TypeOrmModule.forFeature(entities),
     UserModule,
     ItemModule,
+    PaymentMethodModule,
   ],
   controllers: [AppController],
   providers: [AppService],

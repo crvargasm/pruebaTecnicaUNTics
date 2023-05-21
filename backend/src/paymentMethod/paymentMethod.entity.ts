@@ -4,8 +4,8 @@ import { User } from '../user/user.entity';
 
 @Entity()
 export class PaymentMethod {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column()
   status: PaymentMethodStatus;
@@ -19,8 +19,11 @@ export class PaymentMethod {
   @Column()
   expiration_date: Date;
 
+  @Column()
+  userID: number;
+
   @ManyToOne(() => User, (User) => User.paymentMethods)
-  User: User;
+  user: User;
 }
 
 export type PaymentMethodStatus = 'ACTIVE' | 'DECLINED' | 'BALANCE_ISSUE';

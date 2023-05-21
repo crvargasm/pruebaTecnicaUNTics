@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { PaymentMethod } from '../entities/paymentMethod.entity';
+import { PaymentMethod } from '../paymentMethod/paymentMethod.entity';
 
 @Entity() //Sería el semejante a una Tabla en SQL
 export class User extends BaseEntity {
@@ -18,6 +18,6 @@ export class User extends BaseEntity {
   @Column()
   creditBalance: number;
 
-  @OneToMany(() => PaymentMethod, (paymentMethod) => paymentMethod.User)
+  @OneToMany(() => PaymentMethod, (paymentMethod) => paymentMethod.user)
   paymentMethods: PaymentMethod[];
 }

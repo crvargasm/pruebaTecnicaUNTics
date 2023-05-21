@@ -2,14 +2,16 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import { User } from './user.entity'
+
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
-
 //Operaciones con BD
 
 @Injectable()
 export class UserService {
-    constructor(@InjectRepository(User) private readonly userRepository: Repository<User>) { }
+    constructor(
+        @InjectRepository(User) private readonly userRepository: Repository<User>
+    ) { }
 
     async getAllUsers() {
         return await this.userRepository.find() //TODOS los datos dentro de la tabla Users
@@ -19,7 +21,8 @@ export class UserService {
         const userFound = await this.userRepository.findOne({
             where: {
                 id: id
-            }
+            },
+            relations: ['paymentMethods']
         })
         if (!userFound) {
             return new HttpException('User not found', HttpStatus.NOT_FOUND);

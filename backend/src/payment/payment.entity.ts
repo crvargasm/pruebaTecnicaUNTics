@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { PaymentMethod } from './paymentMethod.entity';
+import { PaymentMethod } from '../paymentMethod/paymentMethod.entity';
 import { User } from '../user/user.entity';
 @Entity()
 export class Payment {

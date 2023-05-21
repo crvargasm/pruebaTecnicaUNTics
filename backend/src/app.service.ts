@@ -17,7 +17,7 @@ export class AppService {
     user.username = "wolfGhost23";
     user.creditBalance = 1000;
     this.userRepository.save(user);
-    return ("Holaaaa")
+    return ("Base de datos poblada - Feliz día :D")
     // return [
     //   {
     //     id: 1,
