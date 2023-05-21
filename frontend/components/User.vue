@@ -5,16 +5,16 @@
         <td class="td">{{ surname }}</td>
         <td class="td">{{ username }}</td>
         <td class="td">{{ creditBalance }}</td>
-        <td class="td">{{ paymentMethods }}</td>
         <td class="td">
-            <span @click="alerta" class="action">Editar</span>
-            |
-            <span class="action">Eliminar</span>
+            <!-- <span class="action">Editar</span>| -->
+            <span @click="deleteUser" class="action">Eliminar</span>
         </td>
     </tr>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'User',
     props: [
@@ -26,8 +26,19 @@ export default {
         'paymentMethods',
     ],
     methods: {
-        alerta() {
-            alert("Heyyy")
+        async deleteUser() {
+            const API_PORT = 10000
+            const API_HOST = `http://localhost:${API_PORT}/backend/v2/api/`
+            const url = API_HOST + 'user/';
+            try {
+                const res = await axios.delete(url + this.id)
+                console.log('Respuesta:', res.data)
+            } catch (error) {
+                console.error('Error:', error)
+                return
+            }
+            console.log("User deleted")
+            window.location.reload()
         }
     }
 }

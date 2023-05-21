@@ -12,6 +12,7 @@ import { PaymentMethod } from './paymentMethod/paymentMethod.entity';
 import { UserModule } from './user/user.module';
 import { ItemModule } from './item/item.module';
 import { PaymentMethodModule } from './paymentMethod/paymentMethod.module';
+import { PaymentModule } from './payment/payment.module';
 
 const entities = [User, Item, Payment, PaymentMethod];
 
@@ -33,8 +34,10 @@ const entities = [User, Item, Payment, PaymentMethod];
     UserModule,
     ItemModule,
     PaymentMethodModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule { }

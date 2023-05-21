@@ -1,29 +1,33 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
-import { User } from '../user/user.entity';
+import { User } from '../user/user.entity'
+import { Payment } from 'src/payment/payment.entity'
 
 @Entity()
 export class PaymentMethod {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column()
-  status: PaymentMethodStatus;
+  status: PaymentMethodStatus
 
   @Column({ nullable: false })
-  brand: string;
+  brand: string
 
   @Column({ nullable: false })
-  last4: string;
+  last4: string
 
   @Column()
-  expiration_date: Date;
+  expiration_date: Date
 
   @Column()
-  userID: number;
+  userID: number
 
   @ManyToOne(() => User, (User) => User.paymentMethods)
-  user: User;
+  user: User
+
+  @OneToMany(() => Payment, (payment) => payment.paymentMethod)
+  payment: Payment[]
 }
 
-export type PaymentMethodStatus = 'ACTIVE' | 'DECLINED' | 'BALANCE_ISSUE';
+export type PaymentMethodStatus = 'ACTIVE' | 'DECLINED' | 'BALANCE_ISSUE'
